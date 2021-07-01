@@ -1,39 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
   <title>Frontend Mentor | Interactive pricing component</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
+
 <body>
-
-  Simple, traffic-based pricing
-  Sign-up for our 30-day trial. No credit card required. 
-
-  Pageviews
-  $ /month
-
-  Monthly Billing
-  Yearly Billing 25% discount
-
-  Unlimited websites
-  100% data ownership
-  Email reports
-
-  Start my trial
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+  <div class="box">
+    <div class="texte">
+      <p class="titre">Simple, traffic-based pricing</p>
+      <p class="sous-titre">Sign-up for our 30-day trial. No credit card required.</p>
+    </div>
+    <div class="sous-boite">
+      <div class="top">
+        <div class="amount">
+          <div class="views"><span class="amount-view"></span>PAGEVIEWS</div>
+          <div class="cost"><span class="amount-cost"></span><div>/ month</div></div>
+        </div>
+        <div class="slidecontainer">
+          <input type="range" min="1" max="5" value="3" class="slider" id="myRange">
+        </div>
+        <div class="button-time">Monthly Billing
+          <label class="switch">
+            <input type="checkbox" class="button">
+            <span class="check round"></span>
+          </label> Yearly Billing
+          <div class="sold"> -25% <span class="deleted">discount</span></div>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="options">
+          <label class="checkbox" for="option1"><input type="checkbox" checked id="option1">Unlimited websites</label> <br>
+          <label class="checkbox" for="option2"><input type="checkbox" checked id="option2"> 100% data ownership</label> <br>
+          <label class="checkbox" for="option3"> <input type="checkbox" checked id="option3"> Email reports</label>
+        </div>
+        <div class="submit">
+          <a href="#">Start my trial</a>
+        </div>
+      </div>
+    </div>
   </div>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Evan Rioual</a>.
+  </div>;
+  <script>
+    let view = document.querySelector(".amount-view");
+    let cost = document.querySelector(".amount-cost");
+    let slider = document.querySelector(".slider");
+    let button = document.querySelector(".button");
+    let sold = function () {
+      if (button.checked == false) {
+        if (slider.value == 1) {
+          view.innerHTML = "10K ";
+          cost.innerHTML = "$8.00 ";
+        }
+        if (slider.value == 2) {
+          view.innerHTML = "50K ";
+          cost.innerHTML = "$12.00 ";
+        }
+        if (slider.value == 3) {
+          view.innerHTML = "100K ";
+          cost.innerHTML = "$16.00 ";
+        }
+        if (slider.value == 4) {
+          view.innerHTML = "500K ";
+          cost.innerHTML = "$24.00 ";
+        }
+        if (slider.value == 5) {
+          view.innerHTML = "1M ";
+          cost.innerHTML = "$32.00 ";
+        }
+      }
+      else {
+        if (slider.value == 1) {
+          view.innerHTML = "10K ";
+          cost.innerHTML = "$6.00 ";
+        }
+        if (slider.value == 2) {
+          view.innerHTML = "50K ";
+          cost.innerHTML = "$9.00 ";
+        }
+        if (slider.value == 3) {
+          view.innerHTML = "100K ";
+          cost.innerHTML = "$12.00 ";
+        }
+        if (slider.value == 4) {
+          view.innerHTML = "500K ";
+          cost.innerHTML = "$18.00 ";
+        }
+        if (slider.value == 5) {
+          view.innerHTML = "1M ";
+          cost.innerHTML = "$24.00 ";
+        }
+      }
+    }
+    slider.oninput = sold;
+    button.addEventListener("click", sold);
+    sold();
+  </script>
 </body>
+
 </html>
